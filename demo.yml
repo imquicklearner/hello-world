@@ -1,0 +1,6 @@
+---
+- hosts: all
+  becomes: true
+  tasks:
+    - name: " Hello world"
+      shell: echo "Hello World!"
