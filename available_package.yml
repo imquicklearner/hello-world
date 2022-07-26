@@ -1,0 +1,23 @@
+---
+ - name: Ansible validate if the packages are installed
+   hosts: all
+   become: true
+   tasks:
+   - name: Gather Installed Packages Facts
+     package_facts:
+       manager: "auto"
+     tags:
+      - nginx
+
+   - name: "nginx Found test result"
+     debug: var=ansible_facts.packages['nginx']
+     when: "'nginx' in ansible_facts.packages"
+     tags:
+       - nginx
+
+   - name: "nginx Not-found test result"
+     debug:
+       msg: "nginx NOT found"
+     when: "'nginx' not in ansible_facts.packages"
+     tags:
+       - nginx
