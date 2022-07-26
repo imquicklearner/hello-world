@@ -2,5 +2,5 @@
 - hosts: all
   become: true
   tasks:
-  - name: "test connection"
-    ansible.builtin.ping:
+  - name: "Uptime"
+    shell: uptime
